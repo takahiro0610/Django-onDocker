@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# BASE_DIR：この設定はプロジェクトの基本となるディレクトリのパスを保持します。
+# これは他の設定でファイルやディレクトリのパスを指定する際によく使います。
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -20,15 +22,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY：この秘密鍵は、DjangoがセッションやCSRF保護などのために使用する重要な鍵です。
+# これは本番環境では絶対に外部に漏らさないようにしなければなりません。
 SECRET_KEY = 'django-insecure-4e3xrzq#htzpk8n668(-3uk1k@cl-afasz6d9tp%5m#!8c=xyr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG：デバッグモードを有効にする設定です。これがTrueのとき、エラーメッセージが詳細に表示されます。
+# ただし、本番環境ではこれをFalseに設定すべきです。
 DEBUG = True
 
+# ALLOWED_HOSTS：この設定には、このDjangoアプリケーションをホストすることが許可されているホスト名のリストを指定します。この設定は本番環境で重要になります。
+# 現在は全てのホストからのアクセスを許可しています。
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
-
+# INSTALLED_APPS：この設定には、プロジェクトで使用するDjangoアプリケーションのリストを指定します。
+# ここにアプリケーションの名前を追加すると、Djangoはそのアプリケーションを認識し、対応するデータベーステーブルやテンプレート、管理インターフェースなどを利用できるようになります。
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,8 +46,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app_web',
+    'todolist',
 ]
 
+# MIDDLEWARE：ミドルウェアは、Djangoがリクエストとレスポンスを処理する際の処理の流れを制御します。
+# ミドルウェアは、セキュリティ対策やセッション管理、メッセージ表示など、多くの重要な機能を提供します。
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -49,8 +61,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# ROOT_URLCONF：この設定には、プロジェクトのルートURL設定を指定します。
+# Djangoはこの設定を使ってURLとビューをマッピングします。
 ROOT_URLCONF = 'myproject.urls'
 
+# TEMPLATES：この設定には、テンプレートエンジンの設定が含まれています。
+# テンプレートエンジンは、テンプレートを使ってHTMLを生成するためのツールです。
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -67,6 +83,8 @@ TEMPLATES = [
     },
 ]
 
+#WSGI_APPLICATION：WSGI（Web Server Gateway Interface）は、Pythonアプリケーションがウェブサーバと通信するための標準化されたインターフェースです。
+# この設定には、プロジェクトのWSGIアプリケーションの場所を指定します。
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
 
