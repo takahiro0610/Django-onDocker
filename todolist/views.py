@@ -1,7 +1,12 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import ListView, DetailView
+from .models import TodoModel
 
-# Create your views here.
-class TodoListView(TemplateView):
-    template_name = "todolist.html"
-    
+
+class TodoListView(ListView):
+    template_name = 'list.html'
+    model = TodoModel
+
+class TodoDetail(DetailView):
+    template_name = 'detail.html'
+    model = TodoModel

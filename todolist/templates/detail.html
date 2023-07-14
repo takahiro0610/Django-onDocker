@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+detail
+{% endblock header %}
+
+{% block content %}
+<body>
+    <div class="alert alert-primary" role="alert">
+        {{ object.title }}
+    </div>    
+    <div class="alert alert-primary" role="alert">
+        {{ object.memo }}
+    </div>
+</body>
+{% endblock content %}
+
